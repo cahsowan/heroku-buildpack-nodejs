@@ -78,10 +78,10 @@ else
     status "Downloading and installing node v$node_version"
     download_and_install_node $node_version
   fi
-fi
 
-status "Rebuilding dependencies"
-npm rebuild | indent
+  status "Rebuilding dependencies"
+  npm rebuild | indent
+fi
 
 status "Installing dependencies"
 npm install --production | indent
