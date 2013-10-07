@@ -73,6 +73,9 @@ if test -d $cache_dir; then
   status "Restoring node v$node_version and node_modules from cache"
   test -d $cache_dir/node_modules && cp -r $cache_dir/node_modules $build_dir/
   cp -r $cache_dir/vendor/node $build_dir/vendor/
+
+  status "Updating dependencies"
+  npm update | indent
 else
   if [ $stable_version != $node_version ]; then
     status "Downloading and installing node v$node_version"
@@ -81,10 +84,10 @@ else
 
   status "Rebuilding dependencies"
   npm rebuild | indent
-fi
 
-status "Installing dependencies"
-npm install --production | indent
+  status "Installing dependencies"
+  npm install --production | indent
+fi
 
 status "Caching node and node_modules for future builds"
 rm -rf $cache_dir
