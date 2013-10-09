@@ -7,6 +7,8 @@ cache_basedir=$2
 bp_dir=$(cd $(dirname $0)/..; pwd)
 stable_version="0.10.20"
 
+export npm_config_loglevel=warn
+
 source $bp_dir/bin/common.sh
 
 # Output npm debug info on error
