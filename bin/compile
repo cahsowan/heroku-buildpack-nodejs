@@ -79,6 +79,8 @@ if test -d $cache_dir; then
 
   status "Updating dependencies"
   npm update | indent
+
+  npm run postinstall | indent
 else
   if [ $stable_version != $node_version ]; then
     status "Downloading and installing node v$node_version"
