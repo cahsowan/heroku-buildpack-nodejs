@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 set -e # fail fast
+set -o pipefail
 
 build_dir=$1
 cache_basedir=$2
