@@ -80,6 +80,10 @@ if test -d $cache_dir; then
   status "Updating dependencies"
   npm update | indent
 
+  if test $NPM_REBUILD; then
+    npm rebuild | indent
+  fi
+
   npm run postinstall | indent
 else
   if [ $stable_version != $node_version ]; then
