@@ -81,6 +81,7 @@ if test -d $cache_dir; then
   npm update | indent
 
   if test $NPM_REBUILD; then
+    status "npm rebuild requested"
     npm rebuild | indent
   fi
 
