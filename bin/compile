@@ -67,16 +67,16 @@ if test -d $cache_dir; then
   status "Restoring node_modules from cache"
   test -d $cache_dir/node_modules && cp -r $cache_dir/node_modules $build_dir/
 
-  # If any scripts are defined in package.json, trigger them.
-  # https://npmjs.org/doc/misc/npm-scripts.html
-  hook_scripts=$(cat $build_dir/package.json | $bp_dir/vendor/jq -r .scripts)
-  if [ "$hook_scripts" != "null" ]; then
-    status "Running npm install to trigger script hooks"
-    npm install --production | indent
+  status "Updating dependencies"
+  npm update | indent
+
+  if test $NPM_REBUILD; then
+    status "npm rebuild requested"
+    npm rebuild | indent
   fi
 
+  npm run postinstall | indent
 else
-
   status "Rebuilding dependencies"
   npm rebuild | indent
 
