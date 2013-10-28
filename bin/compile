@@ -9,6 +9,8 @@ build_dir=$1
 cache_basedir=$2
 bp_dir=$(cd $(dirname $0)/..; pwd)
 
+export npm_config_loglevel=${npm_config_loglevel:-warn}
+
 # Load some convenience functions like status() echo(), indent
 source $bp_dir/bin/common.sh
 
