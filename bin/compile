@@ -58,7 +58,8 @@ cd $build_dir
 
 # Configure cache directory
 package_checksum=$(cat $build_dir/package.json | md5sum | awk '{print $1}')
-cache_dir="$cache_basedir/$package_checksum"
+# namespace cache
+cache_dir="$cache_basedir/node-$node_version/$package_checksum"
 
 # Restore from cache if package.json hasn't changed
 if test -d $cache_dir; then
@@ -81,12 +82,14 @@ else
 
   status "Installing dependencies"
   npm install --production | indent
-
-  status "Caching node_modules for future builds"
-  rm -rf $cache_dir
-  mkdir -p $cache_dir
-  test -d $build_dir/node_modules && cp -r $build_dir/node_modules $cache_dir/
 fi
+
+status "Caching node_modules for future builds"
+# clear out any caches we've created
+rm -rf $cache_basedir/node-*
+rm -rf $cache_dir
+mkdir -p $cache_dir
+test -d $build_dir/node_modules && cp -r $build_dir/node_modules $cache_dir/
 
 # Update the PATH
 status "Building runtime environment"
