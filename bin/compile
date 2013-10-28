@@ -61,6 +61,9 @@ package_checksum=$(cat $build_dir/package.json | md5sum | awk '{print $1}')
 # namespace cache
 cache_dir="$cache_basedir/node-$node_version/$package_checksum"
 
+# use the cache directory for a persistent npm cache
+export npm_config_cache="$cache_basedir/npm"
+
 # Restore from cache if package.json hasn't changed
 if test -d $cache_dir; then
   status "package.json unchanged since last build"
@@ -90,6 +93,11 @@ rm -rf $cache_basedir/node-*
 rm -rf $cache_dir
 mkdir -p $cache_dir
 test -d $build_dir/node_modules && cp -r $build_dir/node_modules $cache_dir/
+
+status "Cleaning up node-gyp artifacts"
+# it would be great if this could persist--see
+# https://github.com/TooTallNate/node-gyp/issues/21
+rm -rf "$build_dir/.node-gyp"
 
 # Update the PATH
 status "Building runtime environment"
