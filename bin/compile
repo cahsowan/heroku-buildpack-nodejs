@@ -205,6 +205,7 @@ echo "-----> Vendoring binary dependencies"
 vendor "https://s3.amazonaws.com/mojodna-heroku/freetype-2.4.11.tar.gz" "freetype" "include/freetype2"
 vendor "https://s3.amazonaws.com/mojodna-heroku/cairo-1.12.14.tar.gz" "cairo" "include/cairo"
 vendor "https://s3.amazonaws.com/mojodna-heroku/pixman-0.28.2.tar.gz" "pixman" "include/pixman-1"
+vendor "https://s3.amazonaws.com/mojodna-heroku/giflib-4.2.3-1.tar.gz" "giflib" "include"
 
 # install dependencies with npm
 echo "-----> Installing dependencies with npm"
