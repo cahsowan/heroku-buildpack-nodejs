@@ -202,20 +202,20 @@ export CPATH="$INCLUDE_PATH"
 export CPPPATH="$INCLUDE_PATH"
 
 echo
-echo "#######################################################"
-echo "## Hi, you're using a deprecated buildpack.          ##"
-echo "##                                                   ##"
-echo "## Check out                                         ##"
-echo "## https://github.com/mojodna/heroku-buildpack-cairo ##"
-echo "## for a standalone set of Cairo dependencies that   ##"
-echo "## can be used with more than just the Node.js       ##"
-echo "## buildpack.                                        ##"
-echo "##                                                   ##"
-echo "## It also includes updated versions.                ##"
-echo "##                                                   ##"
-echo "##        Cheers,                                    ##"
-echo "##          Seth                                     ##"
-echo "#######################################################"
+echo "#######################################################" | indent
+echo "## Hi, you're using a deprecated buildpack.          ##" | indent
+echo "##                                                   ##" | indent
+echo "## Check out                                         ##" | indent
+echo "## https://github.com/mojodna/heroku-buildpack-cairo ##" | indent
+echo "## for a standalone set of Cairo dependencies that   ##" | indent
+echo "## can be used with more than just the Node.js       ##" | indent
+echo "## buildpack.                                        ##" | indent
+echo "##                                                   ##" | indent
+echo "## It also includes updated versions.                ##" | indent
+echo "##                                                   ##" | indent
+echo "##        Cheers,                                    ##" | indent
+echo "##          Seth                                     ##" | indent
+echo "#######################################################" | indent
 echo
 
 echo "-----> Vendoring binary dependencies anyway"
