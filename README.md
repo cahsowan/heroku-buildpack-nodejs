@@ -1,6 +1,9 @@
 Cairo Branch
 ============
 
+**NOTE**: There is now a standalone Cairo buildpack that should be used
+instead of this: https://github.com/mojodna/heroku-buildpack-cairo
+
 This is mojodna's branch of bloomtime's branch of [Heroku's official node.js
 buildpack](https://github.com/heroku/heroku-buildpack-nodejs).
 
