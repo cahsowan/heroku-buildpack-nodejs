@@ -6,7 +6,7 @@ set -o pipefail
 build_dir=$1
 cache_basedir=$2/nodejs
 bp_dir=$(cd $(dirname $0)/..; pwd)
-stable_version="0.10.20"
+stable_version="0.10.22"
 
 export npm_config_loglevel=${npm_config_loglevel:-warn}
 
